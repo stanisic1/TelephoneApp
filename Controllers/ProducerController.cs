@@ -9,7 +9,6 @@ using TelephoneApp.Repository;
 
 namespace TelephoneApp.Controllers
 {
-    //[Route("api/[controller]")]
     [ApiController]
     public class ProducerController : ControllerBase
     {
@@ -34,7 +33,6 @@ namespace TelephoneApp.Controllers
                 return NotFound();
             }
              return Ok(producers);
-            //return Ok(_producerRepository.GetAll().ToList());
         }
 
         [HttpGet]
@@ -47,8 +45,6 @@ namespace TelephoneApp.Controllers
                 return NotFound();
             }
 
-            //return Ok(_mapper.Map<StanDTO>(book));
-            //return Ok(telephone);
             return Ok(producer);
         }
 
@@ -67,8 +63,8 @@ namespace TelephoneApp.Controllers
         }
 
         [HttpGet]
-        [Route("api/proizvodjaci/potrazi")] // Remove the query string part from the route
-        public IActionResult GetProducersByName([FromQuery] string name) // Use FromQuery attribute to bind query string parameter
+        [Route("api/proizvodjaci/potrazi")] 
+        public IActionResult GetProducersByName([FromQuery] string name) 
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -99,7 +95,7 @@ namespace TelephoneApp.Controllers
 
         [HttpGet]
         [Route("api/info")] 
-        public IActionResult GetProducersByValue([FromQuery] decimal value) // Use FromQuery attribute to bind query string parameter
+        public IActionResult GetProducersByValue([FromQuery] decimal value) 
         {
      
             var producers = _producerRepository.SearchValue(value);

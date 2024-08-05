@@ -47,8 +47,8 @@ namespace TelephoneApp.Controllers
         
 
         [HttpGet]
-        [Route("api/telefoni/trazi")] // Remove the query string part from the route
-        public IActionResult GetTelephonesByValue([FromQuery] string upit) // Use FromQuery attribute to bind query string parameter
+        [Route("api/telefoni/trazi")] 
+        public IActionResult GetTelephonesByValue([FromQuery] string upit) 
         {
             if (string.IsNullOrEmpty(upit))
             {
@@ -95,7 +95,6 @@ namespace TelephoneApp.Controllers
 
             if (id != telephone.Id)
             {
-                //"Invalid request. Telephone ID mismatch." Ako ovaj tekst ide kao poruka test ne radi
                 return BadRequest();
             }
 
@@ -103,7 +102,6 @@ namespace TelephoneApp.Controllers
             {
                 _telephoneRepository.Update(telephone);
                
-                //return Ok(_mapper.Map<TelephoneDTO>(telephone));
             }
             catch (Exception ex)
             {
@@ -111,7 +109,6 @@ namespace TelephoneApp.Controllers
             }
 
             return Ok(_mapper.Map<TelephoneDTO>(telephone));
-            //return Ok(telephone);
         }
 
         [Authorize]

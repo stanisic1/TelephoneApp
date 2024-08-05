@@ -54,7 +54,6 @@ namespace TelephoneApp.Repository
                 {
                     Name = _context.Producers.Where(z => z.Id == c.Key).Select(z => z.Name).Single(),
                     LowestPrice = _context.Telephones.Where(z => z.ProducerId == c.Key).Select(z => z.Price).Min(),
-                   // LowestPrice = c.Min(p => p.Price),
                     AveragePrice = c.Average(p => p.Price)
                 }).Where(p => p.AveragePrice < value).OrderBy(p => p.Name);
         }
